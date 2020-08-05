@@ -73,4 +73,17 @@ if [ -d $INSTALLATION_DIRECTORY ]; then
         echo "Unable to clone zsh-git-prompt."
         exit 1
     fi
+
+    CD_DIRECTORY=$INSTALLATION_DIRECTORY/zsh-interactive-cd
+    git clone https://github.com/changyuheng/zsh-interactive-cd.git $CD_DIRECTORY
+
+    if [ -d $CD_DIRECTORY ]; then
+        cd $CD_DIRECTORY
+        rm -rf ./.git 
+        rm ./README.md ./LICENSE ./demo.gif
+        mv zsh-interactive-cd.plugin.zsh zsh-interactive-cd.zsh
+    else
+        echo "Unable to clone zsh-interactive-cd."
+        exit 1
+    fi
 fi
