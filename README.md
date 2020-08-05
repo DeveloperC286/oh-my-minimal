@@ -1,7 +1,27 @@
 # oh-my-minimal
+oh-my-minimal is a collection of plugins and documentation to help you create an awesome terminal experience with Zsh.
+
+
+Some of the best plugin for Zsh are already included inside this repository with all redundant files removed to create a minimal install size.
+Simply clone this repository and then source the plugin inside this repository.
+An example .zshrc is provided at the bottom.
+
+
+## Build yourself
+If you do not trust me or want an update from one of the plugins I have not pushed yet.
+You can use the script `build-framework.sh` included in this repository to download all the plugins into a new folder, the script also automatically deletes files like README's etc to take up minimal space.
+
+
+## 3rd Party Additional Plugins
+- [https://github.com/zsh-users/zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+- [https://github.com/zsh-users/zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+- [https://github.com/momo-lab/zsh-abbrev-alias](https://github.com/momo-lab/zsh-abbrev-alias)
+- [https://github.com/olivierverdier/zsh-git-prompt](https://github.com/olivierverdier/zsh-git-prompt) requires Python.
+- [https://github.com/changyuheng/zsh-interactive-cd](https://github.com/changyuheng/zsh-interactive-cd) requires [fzf](https://github.com/junegunn/fzf).
 
 
 ## Example .zshrc
+
 ```
 # History.
 setopt hist_ignore_all_dups
