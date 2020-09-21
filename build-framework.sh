@@ -4,86 +4,110 @@
 command -v git >/dev/null 2>&1 || { echo >&2 "The 'git' command is not installed. Aborting."; exit 1; }
 
 # Setup folder.
-INSTALLATION_DIRECTORY=$HOME"/zsh-plugins"
-rm -rf $INSTALLATION_DIRECTORY
-mkdir -p $INSTALLATION_DIRECTORY
+INSTALLATION_DIR=`pwd`
+README_FILE="$INSTALLATION_DIR/README.md"
+START_BADGE="https://img.shields.io/badge/Upsteam%20Commit-"
+END_BADGE="-yellowgreen\)\]\("
 
-if [ -d $INSTALLATION_DIRECTORY ]; then
-    cd $INSTALLATION_DIRECTORY
-
-    # Install zsh-autosuggestions
-    AUTOSUGGESTIONS_DIRECTORY=$INSTALLATION_DIRECTORY/zsh-autosuggestions
-    git clone git://github.com/zsh-users/zsh-autosuggestions $AUTOSUGGESTIONS_DIRECTORY
-
-    # Clean up zsh-autosuggestions
-    if [ -d $AUTOSUGGESTIONS_DIRECTORY ]; then
-        cd $AUTOSUGGESTIONS_DIRECTORY
-        rm -rf ./.git ./.circleci ./src ./spec ./.github
-        rm ./.rubocop.yml ./Gemfile.lock ./Gemfile ./CHANGELOG.md ./DESCRIPTION ./VERSION ./URL ./.rspec ./ZSH_VERSIONS ./.editorconfig ./Makefile ./.ruby-version ./Dockerfile ./INSTALL.md ./LICENSE ./install_test_zsh.sh ./README.md ./zsh-autosuggestions.plugin.zsh
-    else
-        echo "Unable to clone zsh-autosuggestions."
-        exit 1
-    fi
-
-    # Install zsh-syntax-highlighting
-    HIGHLIGHTING_DIRECTORY=$INSTALLATION_DIRECTORY/zsh-syntax-highlighting
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HIGHLIGHTING_DIRECTORY
-
-    # Clean up zsh-syntax-highlighting
-    if [ -d $HIGHLIGHTING_DIRECTORY ]; then
-        cd $HIGHLIGHTING_DIRECTORY
-        rm -rf ./.git ./docs ./tests ./images
-        rm ./COPYING.md ./changelog.md ./.travis.yml ./.gitignore ./HACKING.md ./Makefile ./.gitattributes ./INSTALL.md ./.version ./.revision-hash ./README.md ./release.md ./.editorconfig ./zsh-syntax-highlighting.plugin.zsh
-        sed -i.bak -E '/typeset -g ZSH_HIGHLIGHT_VERSION*/d' ./zsh-syntax-highlighting.zsh
-        sed -i.bak -E '/typeset -g ZSH_HIGHLIGHT_REVISION*/d' ./zsh-syntax-highlighting.zsh
-        rm ./zsh-syntax-highlighting.zsh.bak
-        cd highlighters/
-        du | grep test-data | awk '{print $2}' | xargs -I {} rm -rf "{}"
-        du -a | grep README.md | awk '{print $2}' | xargs -I {} rm "{}"
-    else
-        echo "Unable to clone zsh-syntax-highlighting."
-        exit 1
-    fi
-
-    # Install zsh-abbrev-alias
-    ABBREV_DIRECTORY=$INSTALLATION_DIRECTORY/zsh-abbrev-alias
-    git clone https://github.com/momo-lab/zsh-abbrev-alias $ABBREV_DIRECTORY
-
-    # Clean up zsh-abbrev-alias
-    if [ -d $ABBREV_DIRECTORY ]; then
-        cd $ABBREV_DIRECTORY
-        rm -rf ./.git
-		rm ./LICENSE ./README.md
-        mv abbrev-alias.plugin.zsh zsh-abbrev-alias.zsh
-    else
-        echo "Unable to clone zsh-abbrev-alias."
-        exit 1
-    fi
-
-    # Install zsh-git-prompt
-    PROMPT_DIRECTORY=$INSTALLATION_DIRECTORY/zsh-git-prompt
-    git clone git@github.com:olivierverdier/zsh-git-prompt.git $PROMPT_DIRECTORY
-
-    if [ -d $PROMPT_DIRECTORY ]; then
-        cd $PROMPT_DIRECTORY
-        rm -rf ./.git ./src
-        rm ./stack.yaml ./screenshot.png ./README.md ./LICENSE.md ./.travis.yml ./.gitignore ./Setup.hs
-        mv zshrc.sh zsh-git-prompt.zsh
-    else
-        echo "Unable to clone zsh-git-prompt."
-        exit 1
-    fi
-
-    CD_DIRECTORY=$INSTALLATION_DIRECTORY/zsh-interactive-cd
-    git clone https://github.com/changyuheng/zsh-interactive-cd.git $CD_DIRECTORY
-
-    if [ -d $CD_DIRECTORY ]; then
-        cd $CD_DIRECTORY
-        rm -rf ./.git 
-        rm ./README.md ./LICENSE ./demo.gif
-        mv zsh-interactive-cd.plugin.zsh zsh-interactive-cd.zsh
-    else
-        echo "Unable to clone zsh-interactive-cd."
-        exit 1
-    fi
+if [ ! -f $README_FILE ]; then
+    echo "README.md to update with commit hashes does not exist."
+    exit 1
 fi
+
+# Install zsh-autosuggestions
+AUTOSUGGESTIONS_DIRECTORY=$INSTALLATION_DIR/zsh-autosuggestions
+AUTOSUGGESTIONS_URL="https://github.com/zsh-users/zsh-autosuggestions"
+rm -rf $AUTOSUGGESTIONS_DIRECTORY
+git clone $AUTOSUGGESTIONS_URL $AUTOSUGGESTIONS_DIRECTORY
+
+# Clean up zsh-autosuggestions
+if [ -d $AUTOSUGGESTIONS_DIRECTORY ]; then
+    cd $AUTOSUGGESTIONS_DIRECTORY
+    GIT_HASH=`git rev-parse --short HEAD`
+    sed -i.bak -E "s|$START_BADGE[0-9a-fA-F]{7}$END_BADGE$AUTOSUGGESTIONS_URL|$START_BADGE$GIT_HASH$END_BADGE$AUTOSUGGESTIONS_URL|" $README_FILE
+    rm -rf ./.git ./.circleci ./src ./spec ./.github
+    rm ./.rubocop.yml ./Gemfile.lock ./Gemfile ./CHANGELOG.md ./DESCRIPTION ./VERSION ./URL ./.rspec ./ZSH_VERSIONS ./.editorconfig ./Makefile ./.ruby-version ./Dockerfile ./INSTALL.md ./LICENSE ./install_test_zsh.sh ./README.md ./zsh-autosuggestions.plugin.zsh
+else
+    echo "Unable to clone zsh-autosuggestions."
+    exit 1
+fi
+
+# Install zsh-syntax-highlighting
+HIGHLIGHTING_DIRECTORY=$INSTALLATION_DIR/zsh-syntax-highlighting
+HIGHLIGHTING_URL="https://github.com/zsh-users/zsh-syntax-highlighting"
+rm -rf $HIGHLIGHTING_DIRECTORY
+git clone $HIGHLIGHTING_URL $HIGHLIGHTING_DIRECTORY
+
+# Clean up zsh-syntax-highlighting
+if [ -d $HIGHLIGHTING_DIRECTORY ]; then
+    cd $HIGHLIGHTING_DIRECTORY
+    GIT_HASH=`git rev-parse --short HEAD`
+    sed -i.bak -E "s|$START_BADGE[0-9a-fA-F]{7}$END_BADGE$HIGHLIGHTING_URL|$START_BADGE$GIT_HASH$END_BADGE$HIGHLIGHTING_URL|" $README_FILE
+    rm -rf ./.git ./docs ./tests ./images
+    rm ./COPYING.md ./changelog.md ./.travis.yml ./.gitignore ./HACKING.md ./Makefile ./.gitattributes ./INSTALL.md ./.version ./.revision-hash ./README.md ./release.md ./.editorconfig ./zsh-syntax-highlighting.plugin.zsh
+    sed -i.bak -E '/typeset -g ZSH_HIGHLIGHT_VERSION*/d' ./zsh-syntax-highlighting.zsh
+    sed -i.bak -E '/typeset -g ZSH_HIGHLIGHT_REVISION*/d' ./zsh-syntax-highlighting.zsh
+    rm ./zsh-syntax-highlighting.zsh.bak
+    cd highlighters/
+    du | grep test-data | awk '{print $2}' | xargs -I {} rm -rf "{}"
+    du -a | grep README.md | awk '{print $2}' | xargs -I {} rm "{}"
+else
+    echo "Unable to clone zsh-syntax-highlighting."
+    exit 1
+fi
+
+# Install zsh-abbrev-alias
+ABBREV_DIRECTORY=$INSTALLATION_DIR/zsh-abbrev-alias
+ABBREV_URL="https://github.com/momo-lab/zsh-abbrev-alias"
+rm -rf $ABBREV_DIRECTORY
+git clone $ABBREV_URL $ABBREV_DIRECTORY
+
+# Clean up zsh-abbrev-alias
+if [ -d $ABBREV_DIRECTORY ]; then
+    cd $ABBREV_DIRECTORY
+    GIT_HASH=`git rev-parse --short HEAD`
+    sed -i.bak -E "s|$START_BADGE[0-9a-fA-F]{7}$END_BADGE$ABBREV_URL|$START_BADGE$GIT_HASH$END_BADGE$ABBREV_URL|" $README_FILE
+    rm -rf ./.git
+    rm ./LICENSE ./README.md
+    mv abbrev-alias.plugin.zsh zsh-abbrev-alias.zsh
+else
+    echo "Unable to clone zsh-abbrev-alias."
+    exit 1
+fi
+
+# Install zsh-git-prompt
+PROMPT_DIRECTORY=$INSTALLATION_DIR/zsh-git-prompt
+PROMPT_URL="https://github.com/olivierverdier/zsh-git-prompt"
+rm -rf $PROMPT_DIRECTORY
+git clone $PROMPT_URL $PROMPT_DIRECTORY
+
+if [ -d $PROMPT_DIRECTORY ]; then
+    cd $PROMPT_DIRECTORY
+    GIT_HASH=`git rev-parse --short HEAD`
+    sed -i.bak -E "s|$START_BADGE[0-9a-fA-F]{7}$END_BADGE$PROMPT_URL|$START_BADGE$GIT_HASH$END_BADGE$PROMPT_URL|" $README_FILE
+    rm -rf ./.git ./src
+    rm ./stack.yaml ./screenshot.png ./README.md ./LICENSE.md ./.travis.yml ./.gitignore ./Setup.hs
+    mv zshrc.sh zsh-git-prompt.zsh
+else
+    echo "Unable to clone zsh-git-prompt."
+    exit 1
+fi
+
+CD_DIRECTORY=$INSTALLATION_DIR/zsh-interactive-cd
+CD_URL="https://github.com/changyuheng/zsh-interactive-cd"
+rm -rf $CD_DIRECTORY
+git clone $CD_URL $CD_DIRECTORY
+
+if [ -d $CD_DIRECTORY ]; then
+    cd $CD_DIRECTORY
+    GIT_HASH=`git rev-parse --short HEAD`
+    sed -i.bak -E "s|$START_BADGE[0-9a-fA-F]{7}$END_BADGE$CD_URL|$START_BADGE$GIT_HASH$END_BADGE$CD_URL|" $README_FILE
+    rm -rf ./.git 
+    rm ./README.md ./LICENSE ./demo.gif
+    mv zsh-interactive-cd.plugin.zsh zsh-interactive-cd.zsh
+else
+    echo "Unable to clone zsh-interactive-cd."
+    exit 1
+fi
+
+rm $README_FILE.bak
