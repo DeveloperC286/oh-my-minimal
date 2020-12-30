@@ -1,4 +1,7 @@
 # oh-my-minimal
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+
+
 oh-my-minimal is a collection of plugins and documentation to help you create an awesome terminal experience with Zsh.
 
 
