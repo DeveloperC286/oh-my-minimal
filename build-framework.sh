@@ -43,8 +43,8 @@ if [ -d $HIGHLIGHTING_DIRECTORY ]; then
     cd $HIGHLIGHTING_DIRECTORY
     GIT_HASH=`git rev-parse --short HEAD`
     sed -i.bak -E "s|$START_BADGE[0-9a-fA-F]{7}$END_BADGE$HIGHLIGHTING_URL|$START_BADGE$GIT_HASH$END_BADGE$HIGHLIGHTING_URL|" $README_FILE
-    rm -rf ./.git ./docs ./tests ./images
-    rm ./COPYING.md ./changelog.md ./.travis.yml ./.gitignore ./HACKING.md ./Makefile ./.gitattributes ./INSTALL.md ./.version ./.revision-hash ./README.md ./release.md ./.editorconfig ./zsh-syntax-highlighting.plugin.zsh
+    rm -rf ./.git ./docs ./tests ./images ./.github/
+    rm ./COPYING.md ./changelog.md ./.gitignore ./HACKING.md ./Makefile ./.gitattributes ./INSTALL.md ./.version ./.revision-hash ./README.md ./release.md ./.editorconfig ./zsh-syntax-highlighting.plugin.zsh
     sed -i.bak -E '/typeset -g ZSH_HIGHLIGHT_VERSION*/d' ./zsh-syntax-highlighting.zsh
     sed -i.bak -E '/typeset -g ZSH_HIGHLIGHT_REVISION*/d' ./zsh-syntax-highlighting.zsh
     rm ./zsh-syntax-highlighting.zsh.bak
