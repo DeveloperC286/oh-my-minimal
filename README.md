@@ -21,7 +21,6 @@ You can use the script `build-framework.sh` included in this repository to downl
 | [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-ae315de-yellowgreen)](https://github.com/zsh-users/zsh-autosuggestions) | [https://github.com/zsh-users/zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) |
 | [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-5eb4948-yellowgreen)](https://github.com/zsh-users/zsh-syntax-highlighting) | [https://github.com/zsh-users/zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) |
 | [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-2f3d218-yellowgreen)](https://github.com/momo-lab/zsh-abbrev-alias) | [https://github.com/momo-lab/zsh-abbrev-alias](https://github.com/momo-lab/zsh-abbrev-alias) |
-| [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-0a6c8b6-yellowgreen)](https://github.com/olivierverdier/zsh-git-prompt) | [https://github.com/olivierverdier/zsh-git-prompt](https://github.com/olivierverdier/zsh-git-prompt) requires Python. |
 | [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-1cfccb9-yellowgreen)](https://github.com/changyuheng/zsh-interactive-cd) | [https://github.com/changyuheng/zsh-interactive-cd](https://github.com/changyuheng/zsh-interactive-cd) requires [fzf](https://github.com/junegunn/fzf). |
 
 
@@ -36,7 +35,6 @@ SAVEHIST=100000
 
 # Source extra zsh plugins.
 source $HOME/.oh-my-minimal/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $HOME/.oh-my-minimal/zsh-git-prompt/zsh-git-prompt.zsh
 source $HOME/.oh-my-minimal/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $HOME/.oh-my-minimal/zsh-abbrev-alias/zsh-abbrev-alias.zsh
 source $HOME/.oh-my-minimal/zsh-interactive-cd/zsh-interactive-cd.zsh
@@ -48,11 +46,23 @@ bindkey "^[[A" history-beginning-search-backward-end
 
 # Prompt information.
 function git_prompt() {
-    tester=$(git rev-parse --git-dir 2> /dev/null) || return
-    echo "$(git_super_status) (`git config user.email`) "
+    git rev-parse --is-inside-work-tree > /dev/null 2>&1 || return
+    EMAIL=`git config --get user.email`
+    BRANCH=`git branch --show-current`
+    echo $'[Email: %F{green}'$EMAIL'%f] [Branch: %F{blue}'$BRANCH'%f]'
+
+    if [ `git branch -a | grep "remotes/origin/$BRANCH\$" | wc -l` -eq 1 ] ; then
+        echo '[%F{green}'`git rev-list origin/master..$BRANCH | wc -l`'%f ahead origin/master]  [%F{yellow}'`git rev-list origin/$BRANCH..HEAD | wc -l`'%f ahead origin]  [%F{red}'`git rev-list HEAD..origin/$BRANCH | wc -l`'%f behind origin]'
+    else
+        echo '[%F{red}Branch not pushed.%f]'
+    fi
+
+    echo ' '
 }
 
-PROMPT=$'%{$fg[blue]%}%n %{$reset_color%}%{$fg[green]%}[%~]%{$reset_color%} $(git_prompt) \n %{$fg[blue]%}%{$fg[blue]%}❯%{$reset_color%} '
+setopt PROMPT_SUBST # Allow functions to be called in prompt.
+#PROMPT=$'%n [%~]\n > '
+PROMPT=$'\n%F{blue}%n%f [%F{green}%~%f] \n$(git_prompt) %F{green}>%f '
 
 # oh-my-zsh case autocompletion ignore casing.
 autoload -Uz compinit && compinit

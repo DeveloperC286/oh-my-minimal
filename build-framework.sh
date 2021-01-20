@@ -75,29 +75,13 @@ else
     exit 1
 fi
 
-# Install zsh-git-prompt
-PROMPT_DIRECTORY=$INSTALLATION_DIR/zsh-git-prompt
-PROMPT_URL="https://github.com/olivierverdier/zsh-git-prompt"
-rm -rf $PROMPT_DIRECTORY
-git clone $PROMPT_URL $PROMPT_DIRECTORY
-
-if [ -d $PROMPT_DIRECTORY ]; then
-    cd $PROMPT_DIRECTORY
-    GIT_HASH=`git rev-parse --short HEAD`
-    sed -i.bak -E "s|$START_BADGE[0-9a-fA-F]{7}$END_BADGE$PROMPT_URL|$START_BADGE$GIT_HASH$END_BADGE$PROMPT_URL|" $README_FILE
-    rm -rf ./.git ./src
-    rm ./stack.yaml ./screenshot.png ./README.md ./LICENSE.md ./.travis.yml ./.gitignore ./Setup.hs
-    mv zshrc.sh zsh-git-prompt.zsh
-else
-    echo "Unable to clone zsh-git-prompt."
-    exit 1
-fi
-
+# Install zsh-interactive-cd
 CD_DIRECTORY=$INSTALLATION_DIR/zsh-interactive-cd
 CD_URL="https://github.com/changyuheng/zsh-interactive-cd"
 rm -rf $CD_DIRECTORY
 git clone $CD_URL $CD_DIRECTORY
 
+# Clean up zsh-interactive-cd
 if [ -d $CD_DIRECTORY ]; then
     cd $CD_DIRECTORY
     GIT_HASH=`git rev-parse --short HEAD`
