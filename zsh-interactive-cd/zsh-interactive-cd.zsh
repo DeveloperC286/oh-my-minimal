@@ -43,8 +43,14 @@ __zic_matched_subdir_list() {
         if [[ "${seg[1]}" != "." && "${line[1]}" == "." ]]; then
           continue
         fi
-        if [[ "$line" == "$seg"* ]]; then
-          echo "$line"
+        if [ "$zic_case_insensitive" = "true" ]; then
+          if [[ "$line:u" == "$seg:u"* ]]; then
+            echo "$line"
+          fi
+        else
+          if [[ "$line" == "$seg"* ]]; then
+            echo "$line"
+          fi
         fi
       done
     )
@@ -57,8 +63,14 @@ __zic_matched_subdir_list() {
         if [[ "${seg[1]}" != "." && "${line[1]}" == "." ]]; then
           continue
         fi
-        if [[ "$line" == *"$seg"* ]]; then
-          echo "$line"
+        if [ "$zic_case_insensitive" = "true" ]; then
+          if [[ "$line:u" == *"$seg:u"* ]]; then
+            echo "$line"
+          fi
+        else
+          if [[ "$line" == *"$seg"* ]]; then
+            echo "$line"
+          fi
         fi
       done
     fi
@@ -69,7 +81,7 @@ __zic_fzf_bindings() {
   autoload is-at-least
   fzf=$(__zic_fzf_prog)
 
-  if $(is-at-least '0.21.0' $(${fzf} --version)); then
+  if $(is-at-least '0.21.0' $(${=fzf} --version)); then
     echo 'shift-tab:up,tab:down,bspace:backward-delete-char/eof'
   else
     echo 'shift-tab:up,tab:down'
