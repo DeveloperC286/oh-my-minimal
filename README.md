@@ -19,7 +19,7 @@ You can use the script `build-framework.sh` included in this repository to downl
 |                                                                                                                                           | |
 |-------------------------------------------------------------------------------------------------------------------------------------------|-|
 | [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-ae315de-yellowgreen)](https://github.com/zsh-users/zsh-autosuggestions) | [https://github.com/zsh-users/zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) |
-| [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-ebef4e5-yellowgreen)](https://github.com/zsh-users/zsh-syntax-highlighting) | [https://github.com/zsh-users/zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) |
+| [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-0e1bb14-yellowgreen)](https://github.com/zsh-users/zsh-syntax-highlighting) | [https://github.com/zsh-users/zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) |
 | [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-b9fecab-yellowgreen)](https://github.com/momo-lab/zsh-abbrev-alias) | [https://github.com/momo-lab/zsh-abbrev-alias](https://github.com/momo-lab/zsh-abbrev-alias) |
 | [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-7bbe02e-yellowgreen)](https://github.com/changyuheng/zsh-interactive-cd) | [https://github.com/changyuheng/zsh-interactive-cd](https://github.com/changyuheng/zsh-interactive-cd) requires [fzf](https://github.com/junegunn/fzf). |
 
