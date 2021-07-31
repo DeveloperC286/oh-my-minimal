@@ -21,7 +21,6 @@ You can use the script `build-framework.sh` included in this repository to downl
 | [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-a411ef3-yellowgreen)](https://github.com/zsh-users/zsh-autosuggestions) | [https://github.com/zsh-users/zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) |
 | [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-dffe304-yellowgreen)](https://github.com/zsh-users/zsh-syntax-highlighting) | [https://github.com/zsh-users/zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) |
 | [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-33fe094-yellowgreen)](https://github.com/momo-lab/zsh-abbrev-alias) | [https://github.com/momo-lab/zsh-abbrev-alias](https://github.com/momo-lab/zsh-abbrev-alias) |
-| [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-7bbe02e-yellowgreen)](https://github.com/changyuheng/zsh-interactive-cd) | [https://github.com/changyuheng/zsh-interactive-cd](https://github.com/changyuheng/zsh-interactive-cd) requires [fzf](https://github.com/junegunn/fzf). |
 
 
 ## Example .zshrc
@@ -47,7 +46,6 @@ SAVEHIST=100000
 source "$HOME/.oh-my-minimal/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$HOME/.oh-my-minimal/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$HOME/.oh-my-minimal/zsh-abbrev-alias/zsh-abbrev-alias.zsh"
-source "$HOME/.oh-my-minimal/zsh-interactive-cd/zsh-interactive-cd.zsh"
 
 # Up arrow key searches history backwards from cursor, do not move cursor.
 autoload -U history-beginning-search-backward
@@ -64,55 +62,21 @@ bindkey "^E" beginning-of-line
 bindkey "^W" vi-forward-word
 
 # Tab does autocompletion suggestions.
-bindkey '\t' zic-completion
+bindkey '\t' expand-or-complete
 
 setopt PROMPT_SUBST # Allow functions to be called in prompt.
 PROMPT=$'\n%F{blue}%n%f@%F{yellow}%M%f [%F{green}%~%f] \n%(?.%F{green}.%F{red}%? )>>>%f '
 
-# Initialize the autocompletion
-autoload -U compinit; compinit
+# Initialize the autocompletion.
+autoload -Uz compinit && compinit
 
 # oh-my-zsh case autocompletion ignore casing.
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|?=** r:|?=**'
 
-source "$HOME/.aliases"
+# Highlight the current autocomplete option.
+zstyle ":completion:*:default" menu select
+
 source "$HOME/.abbreviations"
-```
-
-
-## Example .aliases
-```
-#!/bin/sh
-
-# Enable colour support of ls by default.
-# If Mac OSX
-if [ "$(uname -s | grep -c "^Darwin$")" -eq 1 ]; then
-		alias ls='ls -GFAh'
-		alias ll='ls -GFAhl'
-fi
-
-# If Linux
-if [ "$(uname -s | grep -c "^Linux$")" -eq 1 ]; then
-		alias ls='ls -F --color -Ah'
-		alias ll='ls -F --color -Ahl'
-fi
-
-# Enable colour support of grep by default.
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-
-# Ask for confirmation if overwriting and be verbose by default.
-alias mv="mv -iv"
-
-# Ask for confirmation if overwriting, be verbose and be recursive by default.
-alias cp="cp -riv"
-
-# Create parents if they do not exist and be verbose by default.
-alias mkdir="mkdir -vp"
-
-# Automatically ls after cd.
-cd() { builtin cd "$@" && ls; }
 ```
 
 
@@ -123,12 +87,25 @@ cd() { builtin cd "$@" && ls; }
 # General
 abbrev-alias -g G="| grep"
 abbrev-alias -g S="sudo"
-abbrev-alias -g C="clear"
 abbrev-alias -g E="exit"
+# Ask for confirmation if overwriting and be verbose by default.
+abbrev-alias -g M="mv -iv"
+# Ask for confirmation if overwriting, be verbose and be recursive by default.
+abbrev-alias -g C="cp -riv"
+# Create parents if they do not exist and be verbose by default.
+abbrev-alias -g MD="mkdir -vp"
 
 # If Mac OSX
 if [ "$(uname -s | grep -c "^Darwin$")" -eq 1 ]; then
     XARGS="xargs -I {}"
+
+    # Show almost all entries, add indicators and colour.
+	ENHANCED_LS="ls -A -F -G"
+    abbrev-alias -g L="$ENHANCED_LS"
+    abbrev-alias -g LL="$ENHANCED_LS -l"
+
+    # Automatically ls after cd, does not work with $ENHANCED_LS.
+    cd() { builtin cd "$@" && ls -A -F -G; }
 
     # Clipboard
     if [ "$(command -v pbpaste)" ]; then
@@ -149,6 +126,14 @@ fi
 # If Linux
 if [ "$(uname -s | grep -c "^Linux$")" -eq 1 ]; then
     XARGS="xargs -r -I {}"
+
+    # Show almost all entries, add indicators and colour.
+	ENHANCED_LS="ls --classify --color --almost-all"
+    abbrev-alias -g L="$ENHANCED_LS"
+    abbrev-alias -g LL="$ENHANCED_LS -l"
+
+    # Automatically ls after cd, does not work with $ENHANCED_LS.
+    cd() { builtin cd "$@" && ls --classify --color --almost-all; }
 
     # Clipboard
     if [ "$(command -v xclip)" ]; then

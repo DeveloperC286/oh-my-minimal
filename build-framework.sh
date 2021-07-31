@@ -75,23 +75,4 @@ else
     exit 1
 fi
 
-# Install zsh-interactive-cd
-CD_DIRECTORY=$INSTALLATION_DIR/zsh-interactive-cd
-CD_URL="https://github.com/changyuheng/zsh-interactive-cd"
-rm -rf $CD_DIRECTORY
-git clone $CD_URL $CD_DIRECTORY
-
-# Clean up zsh-interactive-cd
-if [ -d $CD_DIRECTORY ]; then
-    cd $CD_DIRECTORY
-    GIT_HASH=`git rev-parse --short HEAD`
-    sed -i.bak -E "s|$START_BADGE[0-9a-fA-F]{7}$END_BADGE$CD_URL|$START_BADGE$GIT_HASH$END_BADGE$CD_URL|" $README_FILE
-    rm -rf ./.git 
-    rm ./README.md ./LICENSE ./demo.gif
-    mv zsh-interactive-cd.plugin.zsh zsh-interactive-cd.zsh
-else
-    echo "Unable to clone zsh-interactive-cd."
-    exit 1
-fi
-
 rm $README_FILE.bak
