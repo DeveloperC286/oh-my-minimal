@@ -37,7 +37,7 @@ __abbrev_alias::recursive_command() {
 __abbrev_alias::magic_abbrev_expand() {
   emulate -L zsh -o extended_glob
   local MATCH
-  LBUFFER=${LBUFFER%%(#m)[-_a-zA-Z0-9#%+.~]#}
+  LBUFFER=${LBUFFER%%(#m)[-_a-zA-Z0-9#%+.~,:/]#}
   local abbr=${_abbrev_aliases[$MATCH]}
   local kind=${${(s.\0.)abbr}[1]}
   local newbuffer=${${(s.\0.)abbr}[2]:-$MATCH}
@@ -109,13 +109,14 @@ __abbrev_alias::version() {
 
 __abbrev_alias::help() {
   __abbrev_alias::version
-  echo "usage: abbrev-alias [OPTIONS] {name=value ...}"
-  echo "       abbrev-alias -u {name ...}"
-  echo "       abbrev-alias --init"
+  echo "USAGE:"
+  echo "  abbrev-alias [OPTIONS] {name=value ...}"
+  echo "  abbrev-alias -u {name ...}"
+  echo "  abbrev-alias --init"
   echo
-  echo "options:"
+  echo "OPTIONS:"
   echo "  -c, --command   register alias as 'alias name=value'"
-  echo "  -g, --global    register alias as 'alias -g name=value'"
+  echo "  -g, --global    register alias as 'alias -g name=value' like"
   echo "  -e, --eval      evaluates subshells on expansion"
   echo "  -r, --recursive expand aliases recursively"
   echo "  -u, --unset     unregister alias"
