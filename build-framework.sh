@@ -56,22 +56,21 @@ else
     exit 1
 fi
 
-# Install zsh-abbrev-alias
-ABBREV_DIRECTORY=$INSTALLATION_DIR/zsh-abbrev-alias
-ABBREV_URL="https://github.com/momo-lab/zsh-abbrev-alias"
-rm -rf $ABBREV_DIRECTORY
-git clone $ABBREV_URL $ABBREV_DIRECTORY
+# Install zsh-simple-abbreviations
+SIMPLE_ABBREVIATIONS_DIRECTORY="${INSTALLATION_DIR}/zsh-simple-abbreviations"
+SIMPLE_ABBREVIATIONS_URL="https://gitlab.com/DeveloperC/zsh-simple-abbreviations"
+rm -rf "${SIMPLE_ABBREVIATIONS_DIRECTORY}"
+git clone "${SIMPLE_ABBREVIATIONS_URL}" "${SIMPLE_ABBREVIATIONS_DIRECTORY}"
 
-# Clean up zsh-abbrev-alias
-if [ -d $ABBREV_DIRECTORY ]; then
-    cd $ABBREV_DIRECTORY
-    GIT_HASH=`git rev-parse --short HEAD`
-    sed -i.bak -E "s|$START_BADGE[0-9a-fA-F]{7}$END_BADGE$ABBREV_URL|$START_BADGE$GIT_HASH$END_BADGE$ABBREV_URL|" $README_FILE
+# Clean up zsh-simple-abbreviations
+if [ -d "${SIMPLE_ABBREVIATIONS_DIRECTORY}" ]; then
+    cd "${SIMPLE_ABBREVIATIONS_DIRECTORY}"
+	GIT_HASH=$(git rev-parse --short HEAD)
+    sed -i.bak -E "s|${START_BADGE}[0-9a-fA-F]{7}${END_BADGE}${SIMPLE_ABBREVIATIONS_URL}|${START_BADGE}${GIT_HASH}${END_BADGE}${SIMPLE_ABBREVIATIONS_URL}|" "${README_FILE}"
     rm -rf ./.git
-    rm ./LICENSE ./README.md
-    mv abbrev-alias.plugin.zsh zsh-abbrev-alias.zsh
+    rm ./LICENSE ./README.md ./VERSION ./.gitlab-ci.yml
 else
-    echo "Unable to clone zsh-abbrev-alias."
+    echo "Unable to clone zsh-simple-abbreviations."
     exit 1
 fi
 
