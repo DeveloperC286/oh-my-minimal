@@ -20,7 +20,7 @@ You can use the script `build-framework.sh` included in this repository to downl
 |-------------------------------------------------------------------------------------------------------------------------------------------|-|
 | [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-a411ef3-yellowgreen)](https://github.com/zsh-users/zsh-autosuggestions) | [https://github.com/zsh-users/zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) |
 | [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-c7caf57-yellowgreen)](https://github.com/zsh-users/zsh-syntax-highlighting) | [https://github.com/zsh-users/zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) |
-| [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-96101c7-yellowgreen)](https://gitlab.com/DeveloperC/zsh-simple-abbreviations) | [https://gitlab.com/DeveloperC/zsh-simple-abbreviations](https://gitlab.com/DeveloperC/zsh-simple-abbreviations) |
+| [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-5798d8b-yellowgreen)](https://gitlab.com/DeveloperC/zsh-simple-abbreviations) | [https://gitlab.com/DeveloperC/zsh-simple-abbreviations](https://gitlab.com/DeveloperC/zsh-simple-abbreviations) |
 
 
 ## Example .zshrc
@@ -85,36 +85,37 @@ source "$HOME/.abbreviations"
 #!/bin/bash
 
 # General
-zsh-simple-abbreviations G="| grep"
-zsh-simple-abbreviations S="sudo"
-zsh-simple-abbreviations E="exit"
+zsh-simple-abbreviations --add G "| grep"
+zsh-simple-abbreviations --add S "sudo"
+zsh-simple-abbreviations --add E "exit"
+zsh-simple-abbreviations --add C "clear"
 # Ask for confirmation if overwriting and be verbose by default.
-zsh-simple-abbreviations M="mv -iv"
+zsh-simple-abbreviations --add MV "mv -iv"
 # Ask for confirmation if overwriting, be verbose and be recursive by default.
-zsh-simple-abbreviations C="cp -riv"
+zsh-simple-abbreviations --add CP "cp -riv"
 # Create parents if they do not exist and be verbose by default.
-zsh-simple-abbreviations MD="mkdir -vp"
+zsh-simple-abbreviations --add MD "mkdir -vp"
 
 # If Mac OSX
 if [ "$(uname -s | grep -c "^Darwin$")" -eq 1 ]; then
     XARGS="xargs -I {}"
 
     # Show almost all entries, add indicators and colour.
-	ENHANCED_LS="ls -A -F -G"
-    zsh-simple-abbreviations L="$ENHANCED_LS"
-    zsh-simple-abbreviations LL="$ENHANCED_LS -l"
+	ENHANCED_LS="ls -F -G"
+    zsh-simple-abbreviations --add L "${ENHANCED_LS}"
+    zsh-simple-abbreviations --add LL "${ENHANCED_LS} -l"
 
     # Automatically ls after cd, does not work with $ENHANCED_LS.
-    cd() { builtin cd "$@" && ls -A -F -G; }
+    cd() { builtin cd "$@" && ls -F -G; }
 
     # Clipboard
     if [ "$(command -v pbpaste)" ]; then
-        zsh-simple-abbreviations CO="pbpaste"
+        zsh-simple-abbreviations --add CO "pbpaste"
     fi
 
     if [ "$(command -v pbcopy)" ]; then
         COPY_TO_CLIPBOARD="pbcopy"
-        zsh-simple-abbreviations CI="| $COPY_TO_CLIPBOARD"
+        zsh-simple-abbreviations --add CI "| ${COPY_TO_CLIPBOARD}"
     fi
 
     # Open URL with browser.
@@ -128,18 +129,18 @@ if [ "$(uname -s | grep -c "^Linux$")" -eq 1 ]; then
     XARGS="xargs -r -I {}"
 
     # Show almost all entries, add indicators and colour.
-	ENHANCED_LS="ls --classify --color --almost-all"
-    zsh-simple-abbreviations L="$ENHANCED_LS"
-    zsh-simple-abbreviations LL="$ENHANCED_LS -l"
+	ENHANCED_LS="ls --classify --color"
+    zsh-simple-abbreviations --add L "${ENHANCED_LS}"
+    zsh-simple-abbreviations --add LL "${ENHANCED_LS} -l"
 
     # Automatically ls after cd, does not work with $ENHANCED_LS.
-    cd() { builtin cd "$@" && ls --classify --color --almost-all; }
+    cd() { builtin cd "$@" && ls --classify --color; }
 
     # Clipboard
     if [ "$(command -v xclip)" ]; then
         COPY_TO_CLIPBOARD="xclip -selection clipboard"
-        zsh-simple-abbreviations CO="xclip -o"
-        zsh-simple-abbreviations CI="| $COPY_TO_CLIPBOARD"
+        zsh-simple-abbreviations --add CO "xclip -o"
+        zsh-simple-abbreviations --add CI "| ${COPY_TO_CLIPBOARD}"
     fi
 
     # Open URL with browser.
@@ -149,48 +150,48 @@ if [ "$(uname -s | grep -c "^Linux$")" -eq 1 ]; then
 fi
 
 # Terminal Editor
-if [ -n "$EDITOR" ]; then
-    zsh-simple-abbreviations V="$EDITOR"
+if [ -n "${EDITOR}" ]; then
+    zsh-simple-abbreviations --add V "${EDITOR}"
 fi
 
 # Git
 if [ "$(command -v git)" ]; then
     if [ "$(command -v fzf)" ]; then
-        if [ -n "$XARGS" ]; then
-            zsh-simple-abbreviations GCC="git log --oneline | fzf |  cut -d ' ' -f 1 | $XARGS git checkout \"{}\"" # git checkout commit
-            zsh-simple-abbreviations GCB="git branch -a | grep -v \"^  remotes/origin/HEAD\" | grep -v \"^* \" | sort | uniq | fzf | sed 's/^..//' | cut -d' ' -f1 | sed 's/remotes\/origin\///g' | $XARGS git checkout \"{}\"" # git checkout branch
+        if [ -n "${XARGS}" ]; then
+            zsh-simple-abbreviations --add GCC "git log --oneline | fzf |  cut -d ' ' -f 1 | ${XARGS} git checkout \"{}\"" # git checkout commit
+            zsh-simple-abbreviations --add GCB "git branch -a | grep -v \"^  remotes/origin/HEAD\" | grep -v \"^* \" | sort | uniq | fzf | sed 's/^..//' | cut -d' ' -f1 | sed 's/remotes\/origin\///g' | ${XARGS} git checkout \"{}\"" # git checkout branch
         fi
     fi
 
     GET_BRANCH="git branch --show-current"
     GET_HEAD_BRANCH="git branch -a | grep \"^  remotes/origin/HEAD -> origin/\" | cut -d \"/\" -f 4"
 
-    zsh-simple-abbreviations GCM="git rev-parse --is-inside-work-tree > /dev/null 2>&1 && git checkout \"\$($GET_HEAD_BRANCH)\" && git pull && git reset --hard \"origin/\$($GET_HEAD_BRANCH)\"" # git checkout master, using reset as pull kept messing up.
-    zsh-simple-abbreviations GR="git reset --hard HEAD" # git reset
-    zsh-simple-abbreviations GP="git push"
-    zsh-simple-abbreviations GPR="git pull --rebase --autostash" # git pull rebase
-    zsh-simple-abbreviations GS="git rev-parse --is-inside-work-tree > /dev/null 2>&1 && echo '' && git log origin/HEAD~1..\"\$($GET_BRANCH)\" --oneline && echo '' && git status --short && echo ''" # git status
-    zsh-simple-abbreviations GSC="git stash" # git stash content
-    zsh-simple-abbreviations GSCP="git stash pop" # git stash content pop
-    zsh-simple-abbreviations GSCL="git stash list" # git stash content list
-    zsh-simple-abbreviations GD="git diff"
-    zsh-simple-abbreviations GF="git fetch -p"
-	zsh-simple-abbreviations GRM="git rebase \"\$($GET_HEAD_BRANCH)\""
-    zsh-simple-abbreviations GRC="git rebase --continue" #git rebase continue
-    zsh-simple-abbreviations GRU="git clean -f && git clean -fd && git clean -fX" #git remove uncommited
-    zsh-simple-abbreviations GGH="git rev-parse --short HEAD" #Git get hash
-    zsh-simple-abbreviations GGFC="git log --format=format: --name-only --since=12.month | egrep -v '^$' | sort | uniq -c | sort -nr" #Git get frequency changed
-    zsh-simple-abbreviations GRA="git commit --amend --reset-author --no-edit" # Git reset author
-    zsh-simple-abbreviations GCA="git commit --amend --no-edit"  # Git commit ammend
-    zsh-simple-abbreviations GAA="git add -u" # Git add all
-    zsh-simple-abbreviations GPB="git push --set-upstream origin \"\$($GET_BRANCH)\"" #Git push branch
-    zsh-simple-abbreviations GUS="git submodule update --init --recursive" #Git update submodules
+    zsh-simple-abbreviations --add GCM "git rev-parse --is-inside-work-tree > /dev/null 2>&1 && git checkout \"\$(${GET_HEAD_BRANCH})\" && git pull --rebase --autostash" # git checkout master
+    zsh-simple-abbreviations --add GR "git reset --hard HEAD" # git reset
+    zsh-simple-abbreviations --add GP "git push"
+    zsh-simple-abbreviations --add GPR "git pull --rebase --autostash" # git pull rebase
+    zsh-simple-abbreviations --add GS "git rev-parse --is-inside-work-tree > /dev/null 2>&1 && echo '' && git log origin/HEAD~1..\"\$(${GET_BRANCH})\" --oneline && echo '' && git status --short && echo ''" # git status
+    zsh-simple-abbreviations --add GSC "git stash" # git stash content
+    zsh-simple-abbreviations --add GSCP "git stash pop" # git stash content pop
+    zsh-simple-abbreviations --add GSCL "git stash list" # git stash content list
+    zsh-simple-abbreviations --add GD "git diff"
+    zsh-simple-abbreviations --add GF "git fetch -p"
+	zsh-simple-abbreviations --add GRM "git rebase \"\$(${GET_HEAD_BRANCH})\""
+    zsh-simple-abbreviations --add GRC "git rebase --continue" #git rebase continue
+    zsh-simple-abbreviations --add GRU "git clean -f && git clean -fd && git clean -fX" #git remove uncommited
+    zsh-simple-abbreviations --add GGH "git rev-parse --short HEAD" #Git get hash
+    zsh-simple-abbreviations --add GGFC "git log --format=format: --name-only --since=12.month | egrep -v '^$' | sort | uniq -c | sort -nr" #Git get frequency changed
+    zsh-simple-abbreviations --add GRA "git commit --amend --reset-author --no-edit" # Git reset author
+    zsh-simple-abbreviations --add GCA "git commit --amend --no-edit"  # Git commit ammend
+    zsh-simple-abbreviations --add GAA "git add -u" # Git add all
+    zsh-simple-abbreviations --add GPB "git push --set-upstream origin \"\$(${GET_BRANCH})\"" #Git push branch
+    zsh-simple-abbreviations --add GUS "git submodule update --init --recursive" #Git update submodules
 
-    if [ -n "$OPEN_URL" ]; then
+    if [ -n "${OPEN_URL}" ]; then
         GET_REPOSITORY_URL="git remote get-url origin | cut -d '@' -f 2 | rev | cut -d '.' -f 2- | rev | sed 's/:/\//g'"
-		zsh-simple-abbreviations GOR="REMOTE=\"https://\`$GET_REPOSITORY_URL\`\" && $OPEN_URL \"\$REMOTE\"" #git open repository
-        zsh-simple-abbreviations GOB="REMOTE=\"https://\`$GET_REPOSITORY_URL\`/tree/\`$GET_BRANCH\`\" && $OPEN_URL \"\$REMOTE\"" #git open branch
-        zsh-simple-abbreviations GOP="REMOTE=\"https://\`$GET_REPOSITORY_URL\`\" && if [[ \$REMOTE = gitlab* ]]; then $OPEN_URL \"\$REMOTE/-/merge_requests/new?merge_request%5Bsource_branch%5D=\`$GET_BRANCH\`\"; elif [[ \$REMOTE = github* ]]; then $OPEN_URL \"\$REMOTE/pull/new/\`$GET_BRANCH\`\"; else echo \"Not GitLab/GitHub can not handle.\"; fi" #git open pr
+		zsh-simple-abbreviations --add GOR "REMOTE=\"https://\`${GET_REPOSITORY_URL}\`\" && ${OPEN_URL} \"\$REMOTE\"" #git open repository
+        zsh-simple-abbreviations --add GOB "REMOTE=\"https://\`${GET_REPOSITORY_URL}\`/tree/\`${GET_BRANCH}\`\" && ${OPEN_URL} \"\$REMOTE\"" #git open branch
+        zsh-simple-abbreviations --add GOP "REMOTE=\"\`${GET_REPOSITORY_URL}\`\" && if [[ \$REMOTE = gitlab* ]]; then ${OPEN_URL} \"https://\$REMOTE/-/merge_requests/new?merge_request%5Bsource_branch%5D=\`${GET_BRANCH}\`\"; elif [[ \$REMOTE = github* ]]; then ${OPEN_URL} \"https://\$REMOTE/pull/new/\`${GET_BRANCH}\`\"; else echo \"Not GitLab/GitHub can not handle.\"; fi" #git open pr
     fi
 fi
 ```

@@ -68,7 +68,7 @@ if [ -d "${SIMPLE_ABBREVIATIONS_DIRECTORY}" ]; then
 	GIT_HASH=$(git rev-parse --short HEAD)
     sed -i.bak -E "s|${START_BADGE}[0-9a-fA-F]{7}${END_BADGE}${SIMPLE_ABBREVIATIONS_URL}|${START_BADGE}${GIT_HASH}${END_BADGE}${SIMPLE_ABBREVIATIONS_URL}|" "${README_FILE}"
     rm -rf ./.git
-    rm ./LICENSE ./README.md ./VERSION ./.gitlab-ci.yml
+    rm ./LICENSE ./README.md ./.gitlab-ci.yml
 else
     echo "Unable to clone zsh-simple-abbreviations."
     exit 1
