@@ -19,8 +19,8 @@ You can use the script `build-framework.sh` included in this repository to downl
 |                                                                                                                                           | |
 |-------------------------------------------------------------------------------------------------------------------------------------------|-|
 | [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-a411ef3-yellowgreen)](https://github.com/zsh-users/zsh-autosuggestions) | [https://github.com/zsh-users/zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) |
-| [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-6e0e950-yellowgreen)](https://github.com/zsh-users/zsh-syntax-highlighting) | [https://github.com/zsh-users/zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) |
-| [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-d65d86c-yellowgreen)](https://gitlab.com/DeveloperC/zsh-simple-abbreviations) | [https://gitlab.com/DeveloperC/zsh-simple-abbreviations](https://gitlab.com/DeveloperC/zsh-simple-abbreviations) |
+| [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-c7caf57-yellowgreen)](https://github.com/zsh-users/zsh-syntax-highlighting) | [https://github.com/zsh-users/zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) |
+| [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-96101c7-yellowgreen)](https://gitlab.com/DeveloperC/zsh-simple-abbreviations) | [https://gitlab.com/DeveloperC/zsh-simple-abbreviations](https://gitlab.com/DeveloperC/zsh-simple-abbreviations) |
 
 
 ## Example .zshrc
