@@ -1,5 +1,6 @@
 # oh-my-minimal
-[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![License: AGPL v3](https://img.shields.io/badge/License-AGPLv3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPLv3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
 
 oh-my-minimal is a collection of plugins and documentation to help you create an awesome terminal experience with Zsh.
@@ -32,20 +33,20 @@ if [[ ! -o interactive ]]; then
 fi
 
 # Load all common setup between Bash and Zsh.
-if [[ -f "$HOME/.profile" ]]; then
-    source "$HOME/.profile"
+if [[ -f "${HOME}/.profile" ]]; then
+    source "${HOME}/.profile"
 fi
 
 # History.
 setopt hist_ignore_all_dups
-HISTFILE=$HOME/.zsh_history
+HISTFILE=${HOME}/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
 
 # Source extra zsh plugins.
-source "$HOME/.oh-my-minimal/zsh-autosuggestions/zsh-autosuggestions.zsh"
-source "$HOME/.oh-my-minimal/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-source "$HOME/.oh-my-minimal/zsh-simple-abbreviations/zsh-simple-abbreviations.zsh
+source "${HOME}/.oh-my-minimal/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "${HOME}/.oh-my-minimal/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "${HOME}/.oh-my-minimal/zsh-simple-abbreviations/zsh-simple-abbreviations.zsh
 
 # Up arrow key searches history backwards from cursor, do not move cursor.
 autoload -U history-beginning-search-backward
@@ -76,7 +77,7 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower
 # Highlight the current autocomplete option.
 zstyle ":completion:*:default" menu select
 
-source "$HOME/.abbreviations"
+source "${HOME}/.abbreviations"
 ```
 
 
@@ -192,6 +193,15 @@ if [ "$(command -v git)" ]; then
 		zsh-simple-abbreviations --add GOR "REMOTE=\"https://\`${GET_REPOSITORY_URL}\`\" && ${OPEN_URL} \"\$REMOTE\"" #git open repository
         zsh-simple-abbreviations --add GOB "REMOTE=\"https://\`${GET_REPOSITORY_URL}\`/tree/\`${GET_BRANCH}\`\" && ${OPEN_URL} \"\$REMOTE\"" #git open branch
         zsh-simple-abbreviations --add GOP "REMOTE=\"\`${GET_REPOSITORY_URL}\`\" && if [[ \$REMOTE = gitlab* ]]; then ${OPEN_URL} \"https://\$REMOTE/-/merge_requests/new?merge_request%5Bsource_branch%5D=\`${GET_BRANCH}\`\"; elif [[ \$REMOTE = github* ]]; then ${OPEN_URL} \"https://\$REMOTE/pull/new/\`${GET_BRANCH}\`\"; else echo \"Not GitLab/GitHub can not handle.\"; fi" #git open pr
+    fi
+fi
+
+# Docker
+if [ "$(command -v docker)" ]; then
+    if [ -n "${XARGS}" ]; then
+        zsh-simple-abbreviations --add DRC "docker ps -a | grep \"Exited\" | awk '{print \$1}' | ${XARGS} docker rm \"{}\"";
+        zsh-simple-abbreviations --add DRI "docker images -q | ${XARGS} docker rmi \"{}\"";
+        zsh-simple-abbreviations --add DKC "docker ps -q | ${XARGS} docker kill \"{}\"";
     fi
 fi
 ```
