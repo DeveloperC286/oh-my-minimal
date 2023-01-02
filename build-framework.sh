@@ -26,8 +26,9 @@ git clone "${AUTOSUGGESTIONS_URL}" "${AUTOSUGGESTIONS_DIRECTORY}"
 # Clean up zsh-autosuggestions
 if [ -d "${AUTOSUGGESTIONS_DIRECTORY}" ]; then
 	cd "${AUTOSUGGESTIONS_DIRECTORY}"
-	GIT_HASH=$(git rev-parse --short HEAD)
-	sed -i.bak -E "s|${START_BADGE}[0-9a-fA-F]{7}${END_BADGE}${AUTOSUGGESTIONS_URL}|${START_BADGE}${GIT_HASH}${END_BADGE}${AUTOSUGGESTIONS_URL}|" "${README_FILE}"
+	LONG_GIT_HASH=$(git rev-parse HEAD)
+	SHORT_GIT_HASH=$(git rev-parse --short HEAD)
+	sed -i.bak -E "s|${START_BADGE}[0-9a-fA-F]{7}${END_BADGE}${AUTOSUGGESTIONS_URL}/commit/[0-9a-fA-F]{40}|${START_BADGE}${SHORT_GIT_HASH}${END_BADGE}${AUTOSUGGESTIONS_URL}/commit/${LONG_GIT_HASH}|" "${README_FILE}"
 	rm -rf ./.git ./.circleci ./src ./spec ./.github
 	rm ./.rubocop.yml ./Gemfile.lock ./Gemfile ./CHANGELOG.md ./DESCRIPTION ./VERSION ./URL ./.rspec ./ZSH_VERSIONS ./.editorconfig ./Makefile ./.ruby-version ./Dockerfile ./INSTALL.md ./LICENSE ./install_test_zsh.sh ./README.md ./zsh-autosuggestions.plugin.zsh
 else
@@ -44,8 +45,9 @@ git clone "${HIGHLIGHTING_URL}" "${HIGHLIGHTING_DIRECTORY}"
 # Clean up zsh-syntax-highlighting
 if [ -d "${HIGHLIGHTING_DIRECTORY}" ]; then
 	cd "${HIGHLIGHTING_DIRECTORY}"
-	GIT_HASH=$(git rev-parse --short HEAD)
-	sed -i.bak -E "s|${START_BADGE}[0-9a-fA-F]{7}${END_BADGE}${HIGHLIGHTING_URL}|${START_BADGE}${GIT_HASH}${END_BADGE}${HIGHLIGHTING_URL}|" "${README_FILE}"
+	LONG_GIT_HASH=$(git rev-parse HEAD)
+	SHORT_GIT_HASH=$(git rev-parse --short HEAD)
+	sed -i.bak -E "s|${START_BADGE}[0-9a-fA-F]{7}${END_BADGE}${HIGHLIGHTING_URL}/commit/[0-9a-fA-F]{40}|${START_BADGE}${SHORT_GIT_HASH}${END_BADGE}${HIGHLIGHTING_URL}/commit/${LONG_GIT_HASH}|" "${README_FILE}"
 	rm -rf ./.git ./docs ./tests ./images ./.github/
 	rm ./COPYING.md ./changelog.md ./.gitignore ./HACKING.md ./Makefile ./.gitattributes ./INSTALL.md ./.version ./.revision-hash ./README.md ./release.md ./.editorconfig ./zsh-syntax-highlighting.plugin.zsh
 	sed -i.bak -E '/typeset -g ZSH_HIGHLIGHT_VERSION*/d' ./zsh-syntax-highlighting.zsh
@@ -68,8 +70,9 @@ git clone "${SIMPLE_ABBREVIATIONS_URL}" "${SIMPLE_ABBREVIATIONS_DIRECTORY}"
 # Clean up zsh-simple-abbreviations
 if [ -d "${SIMPLE_ABBREVIATIONS_DIRECTORY}" ]; then
 	cd "${SIMPLE_ABBREVIATIONS_DIRECTORY}"
-	GIT_HASH=$(git rev-parse --short HEAD)
-	sed -i.bak -E "s|${START_BADGE}[0-9a-fA-F]{7}${END_BADGE}${SIMPLE_ABBREVIATIONS_URL}|${START_BADGE}${GIT_HASH}${END_BADGE}${SIMPLE_ABBREVIATIONS_URL}|" "${README_FILE}"
+	LONG_GIT_HASH=$(git rev-parse HEAD)
+	SHORT_GIT_HASH=$(git rev-parse --short HEAD)
+	sed -i.bak -E "s|${START_BADGE}[0-9a-fA-F]{7}${END_BADGE}${SIMPLE_ABBREVIATIONS_URL}/-/tree/[0-9a-fA-F]{40}|${START_BADGE}${SHORT_GIT_HASH}${END_BADGE}${SIMPLE_ABBREVIATIONS_URL}/-/tree/${LONG_GIT_HASH}|" "${README_FILE}"
 	rm -rf ./.git
 	rm ./LICENSE ./README.md ./.gitlab-ci.yml
 else

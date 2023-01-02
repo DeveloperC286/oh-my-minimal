@@ -19,9 +19,9 @@ You can use the script `build-framework.sh` included in this repository to downl
 ## 3rd Party Additional Plugins
 |                                                                                                                                           | |
 |-------------------------------------------------------------------------------------------------------------------------------------------|-|
-| [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-a411ef3-yellowgreen)](https://github.com/zsh-users/zsh-autosuggestions) | [https://github.com/zsh-users/zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) |
-| [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-122dc46-yellowgreen)](https://github.com/zsh-users/zsh-syntax-highlighting) | [https://github.com/zsh-users/zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) |
-| [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-fab8c1c-yellowgreen)](https://gitlab.com/DeveloperC/zsh-simple-abbreviations) | [https://gitlab.com/DeveloperC/zsh-simple-abbreviations](https://gitlab.com/DeveloperC/zsh-simple-abbreviations) |
+| [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-a411ef3-yellowgreen)](https://github.com/zsh-users/zsh-autosuggestions/commit/a411ef3e0992d4839f0732ebeb9823024afaaaa8) | [https://github.com/zsh-users/zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) |
+| [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-122dc46-yellowgreen)](https://github.com/zsh-users/zsh-syntax-highlighting/commit/122dc464392302114556b53ec01a1390c54f739f) | [https://github.com/zsh-users/zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) |
+| [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-fab8c1c-yellowgreen)](https://gitlab.com/DeveloperC/zsh-simple-abbreviations/-/tree/fab8c1c3961ef042aa7e514f7f32021fbbac6ecc) | [https://gitlab.com/DeveloperC/zsh-simple-abbreviations](https://gitlab.com/DeveloperC/zsh-simple-abbreviations) |
 
 
 ## Example .zshrc
