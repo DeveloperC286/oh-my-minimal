@@ -4,7 +4,7 @@
 command -v git >/dev/null 2>&1 || { echo >&2 "The 'git' command is not installed. Aborting."; exit 1; }
 
 # Setup folder.
-INSTALLATION_DIR=`pwd`
+INSTALLATION_DIR=$(pwd)
 README_FILE="${INSTALLATION_DIR}/README.md"
 START_BADGE="https://img.shields.io/badge/Upsteam%20Commit-"
 END_BADGE="-yellowgreen\)\]\("
@@ -23,7 +23,7 @@ git clone "${AUTOSUGGESTIONS_URL}" "${AUTOSUGGESTIONS_DIRECTORY}"
 # Clean up zsh-autosuggestions
 if [ -d "${AUTOSUGGESTIONS_DIRECTORY}" ]; then
     cd "${AUTOSUGGESTIONS_DIRECTORY}"
-    GIT_HASH=`git rev-parse --short HEAD`
+	GIT_HASH=$(git rev-parse --short HEAD)
     sed -i.bak -E "s|${START_BADGE}[0-9a-fA-F]{7}${END_BADGE}${AUTOSUGGESTIONS_URL}|${START_BADGE}${GIT_HASH}${END_BADGE}${AUTOSUGGESTIONS_URL}|" "${README_FILE}"
     rm -rf ./.git ./.circleci ./src ./spec ./.github
     rm ./.rubocop.yml ./Gemfile.lock ./Gemfile ./CHANGELOG.md ./DESCRIPTION ./VERSION ./URL ./.rspec ./ZSH_VERSIONS ./.editorconfig ./Makefile ./.ruby-version ./Dockerfile ./INSTALL.md ./LICENSE ./install_test_zsh.sh ./README.md ./zsh-autosuggestions.plugin.zsh
@@ -41,7 +41,7 @@ git clone "${HIGHLIGHTING_URL}" "${HIGHLIGHTING_DIRECTORY}"
 # Clean up zsh-syntax-highlighting
 if [ -d "${HIGHLIGHTING_DIRECTORY}" ]; then
     cd "${HIGHLIGHTING_DIRECTORY}"
-    GIT_HASH=`git rev-parse --short HEAD`
+	GIT_HASH=$(git rev-parse --short HEAD)
     sed -i.bak -E "s|${START_BADGE}[0-9a-fA-F]{7}${END_BADGE}${HIGHLIGHTING_URL}|${START_BADGE}${GIT_HASH}${END_BADGE}${HIGHLIGHTING_URL}|" "${README_FILE}"
     rm -rf ./.git ./docs ./tests ./images ./.github/
     rm ./COPYING.md ./changelog.md ./.gitignore ./HACKING.md ./Makefile ./.gitattributes ./INSTALL.md ./.version ./.revision-hash ./README.md ./release.md ./.editorconfig ./zsh-syntax-highlighting.plugin.zsh
