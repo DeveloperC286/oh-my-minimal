@@ -24,6 +24,13 @@ You can use the script `build-framework.sh` included in this repository to downl
 | [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-fab8c1c-yellowgreen)](https://gitlab.com/DeveloperC/zsh-simple-abbreviations/-/tree/fab8c1c3961ef042aa7e514f7f32021fbbac6ecc) | [https://gitlab.com/DeveloperC/zsh-simple-abbreviations](https://gitlab.com/DeveloperC/zsh-simple-abbreviations) |
 
 
+## Installation
+
+```sh
+git clone https://gitlab.com/DeveloperC/oh-my-minimal.git ~/.oh-my-minimal
+```
+
+
 ## Example .zshrc
 
 ```sh
