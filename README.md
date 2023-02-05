@@ -26,7 +26,7 @@ You can use the script `build-framework.sh` included in this repository to downl
 
 ## Example .zshrc
 
-```
+```sh
 # If not interactive shell, don't load anything.
 if [[ ! -o interactive ]]; then
     return
@@ -82,7 +82,7 @@ source "${HOME}/.abbreviations"
 
 
 ## Example .abbreviations
-```
+```sh
 #!/bin/bash
 
 # General
