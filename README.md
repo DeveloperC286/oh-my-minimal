@@ -45,15 +45,22 @@ if [[ -f "${HOME}/.profile" ]]; then
 fi
 
 # History.
-setopt hist_ignore_all_dups
 HISTFILE=${HOME}/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
+# https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/history.zsh#L34
+# https://zsh.sourceforge.io/Doc/Release/Options.html
+setopt extended_history       # Record timestamp and duration in the HISTFILE.
+setopt hist_expire_dups_first # Delete duplicates first when the HISTFILE size exceeds HISTSIZE.
+setopt hist_ignore_dups       # Do not record if it is a duplicate of the previous command.
+setopt hist_ignore_space      # Do not record if the command starts with a space.
+setopt hist_verify            # Show command with history expansion before running it.
+setopt share_history          # To save every command before it is executed and to read the history file everytime history is called.
 
 # Source extra zsh plugins.
 source "${HOME}/.oh-my-minimal/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "${HOME}/.oh-my-minimal/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-source "${HOME}/.oh-my-minimal/zsh-simple-abbreviations/zsh-simple-abbreviations.zsh
+source "${HOME}/.oh-my-minimal/zsh-simple-abbreviations/zsh-simple-abbreviations.zsh"
 
 # Up arrow key searches history backwards from cursor, do not move cursor.
 autoload -U history-beginning-search-backward
