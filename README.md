@@ -20,7 +20,7 @@ You can use the script `build-framework.sh` included in this repository to downl
 |                                                                                                                                           | |
 |-------------------------------------------------------------------------------------------------------------------------------------------|-|
 | [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-a411ef3-yellowgreen)](https://github.com/zsh-users/zsh-autosuggestions/commit/a411ef3e0992d4839f0732ebeb9823024afaaaa8) | [https://github.com/zsh-users/zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) |
-| [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-754cefe-yellowgreen)](https://github.com/zsh-users/zsh-syntax-highlighting/commit/754cefe0181a7acd42fdcb357a67d0217291ac47) | [https://github.com/zsh-users/zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) |
+| [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-1386f12-yellowgreen)](https://github.com/zsh-users/zsh-syntax-highlighting/commit/1386f1213eb0b0589d73cd3cf7c56e6a972a9bfd) | [https://github.com/zsh-users/zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) |
 | [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-fab8c1c-yellowgreen)](https://gitlab.com/DeveloperC/zsh-simple-abbreviations/-/tree/fab8c1c3961ef042aa7e514f7f32021fbbac6ecc) | [https://gitlab.com/DeveloperC/zsh-simple-abbreviations](https://gitlab.com/DeveloperC/zsh-simple-abbreviations) |
 
 
