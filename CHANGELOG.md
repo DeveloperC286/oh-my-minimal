@@ -1,0 +1,21 @@
+# Changelog
+
+## 1.0.0 (2024-10-11)
+
+## What's Changed
+* ci: removing GitLab CI/CD configuration by @DeveloperC286 in https://github.com/DeveloperC286/oh-my-minimal/pull/3
+* ci: adding GitHub Actions Workflows linting by @DeveloperC286 in https://github.com/DeveloperC286/oh-my-minimal/pull/4
+* ci: adding GitLab mirroring GitHub Action by @DeveloperC286 in https://github.com/DeveloperC286/oh-my-minimal/pull/6
+* ci: adding clean Git history workflow by @DeveloperC286 in https://github.com/DeveloperC286/oh-my-minimal/pull/7
+* ci: adding Conventional Commits linting workflow by @DeveloperC286 in https://github.com/DeveloperC286/oh-my-minimal/pull/8
+* chore: Configure Renovate by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/9
+* chore(deps): update actions/checkout action to v4 by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/11
+* ci: converting to earthly/actions-setup@v1 by @DeveloperC286 in https://github.com/DeveloperC286/oh-my-minimal/pull/12
+* ci: adding release-please by @DeveloperC286 in https://github.com/DeveloperC286/oh-my-minimal/pull/13
+* ci: correcting release-please type by @DeveloperC286 in https://github.com/DeveloperC286/oh-my-minimal/pull/15
+
+## New Contributors
+* @DeveloperC286 made their first contribution in https://github.com/DeveloperC286/oh-my-minimal/pull/3
+* @renovate made their first contribution in https://github.com/DeveloperC286/oh-my-minimal/pull/9
+
+**Full Changelog**: https://github.com/DeveloperC286/oh-my-minimal/commits/v1.0.0
