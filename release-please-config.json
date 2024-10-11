@@ -1,0 +1,12 @@
+{
+  "changelog-type": "github",
+  "release-type": "go",
+  "pull-request-title-pattern": "chore: release ${version}",
+  "packages": {
+    ".": {
+      "extra-files": [
+        "README.md"
+      ]
+    }
+  }
+}
