@@ -11,23 +11,10 @@ Simply clone this repository and then source the plugin inside this repository.
 An example .zshrc is provided at the bottom.
 
 
-## Build yourself
-If you do not trust me or want an update from one of the plugins I have not pushed yet.
-You can use the script `build-framework.sh` included in this repository to download all the plugins into a new folder, the script also automatically deletes files like README's etc to take up minimal space.
-
-
-## 3rd Party Additional Plugins
-|                                                                                                                                           | |
-|-------------------------------------------------------------------------------------------------------------------------------------------|-|
-| [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-a411ef3-yellowgreen)](https://github.com/zsh-users/zsh-autosuggestions/commit/a411ef3e0992d4839f0732ebeb9823024afaaaa8) | [https://github.com/zsh-users/zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) |
-| [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-1386f12-yellowgreen)](https://github.com/zsh-users/zsh-syntax-highlighting/commit/1386f1213eb0b0589d73cd3cf7c56e6a972a9bfd) | [https://github.com/zsh-users/zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) |
-| [![pipeline status](https://img.shields.io/badge/Upsteam%20Commit-2c2ee06-yellowgreen)](https://gitlab.com/DeveloperC/zsh-simple-abbreviations/-/tree/2c2ee069ebae6c6a83d590b883bc5e1ff1fc034c) | [https://gitlab.com/DeveloperC/zsh-simple-abbreviations](https://gitlab.com/DeveloperC/zsh-simple-abbreviations) |
-
-
 ## Installation
 
 ```sh
-git clone https://gitlab.com/DeveloperC/oh-my-minimal.git ~/.oh-my-minimal
+git clone https://github.com/DeveloperC286/oh-my-minimal.git ~/.oh-my-minimal
 ```
 
 
