@@ -1,5 +1,26 @@
 # Changelog
 
+## 1.0.1 (2025-05-23)
+
+## What's Changed
+* chore(deps): update dependency developerc286/clean_git_history to v1.0.1 by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/64
+* build: cloning releases from GitHub by @DeveloperC286 in https://github.com/DeveloperC286/oh-my-minimal/pull/66
+* docs: correcting Git URL by @DeveloperC286 in https://github.com/DeveloperC286/oh-my-minimal/pull/67
+* chore(deps): update golang:1.24.2 docker digest to 8131d99 by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/68
+* chore(deps): update golang:1.24.2 docker digest to f52b85c by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/69
+* chore(deps): update golang:1.24.2 docker digest to 30baaea by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/70
+* chore(deps): update golang docker tag to v1.24.3 by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/71
+* chore(deps): update golang:1.24.3 docker digest to 86b4cff by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/73
+* chore(deps): update dependency developerc286/clean_git_history to v1.0.2 by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/74
+* chore(deps): update golang:1.24.3 docker digest to 1bcf884 by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/75
+* chore(deps): update golang:1.24.3 docker digest to 02a2275 by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/76
+* chore(deps): update golang:1.24.3 docker digest to baf611f by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/77
+* chore(deps): update golang:1.24.3 docker digest to 795a40c by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/78
+* chore(deps): update golang:1.24.3 docker digest to 4c0a181 by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/79
+
+
+**Full Changelog**: https://github.com/DeveloperC286/oh-my-minimal/compare/v1.0.0...v1.0.1
+
 ## 1.0.0 (2025-04-18)
 
 ## What's Changed
