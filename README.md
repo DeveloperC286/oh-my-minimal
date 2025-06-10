@@ -6,7 +6,7 @@
 oh-my-minimal is a collection of plugins and documentation to help you create an awesome terminal experience with Zsh.
 
 
-Some of the best plugin for Zsh are already included inside this repository with all redundant files removed to create a minimal install size.
+Some of the best plugins for Zsh are already included inside this repository with all redundant files removed to create a minimal install size.
 Simply clone this repository and then source the plugin inside this repository.
 An example .zshrc is provided at the bottom.
 
@@ -44,7 +44,7 @@ setopt hist_ignore_space      # Do not record if the command starts with a space
 setopt hist_verify            # Show command with history expansion before running it.
 setopt share_history          # To save every command before it is executed and to read the history file everytime history is called.
 
-# Source extra zsh plugins.
+# Source extra Zsh plugins.
 source "${HOME}/.oh-my-minimal/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "${HOME}/.oh-my-minimal/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "${HOME}/.oh-my-minimal/zsh-simple-abbreviations/zsh-simple-abbreviations.zsh"
@@ -72,7 +72,7 @@ PROMPT=$'\n%F{blue}%n%f@%F{yellow}%M%f [%F{green}%~%f] \n%(?.%F{green}.%F{red}%?
 # Initialize the autocompletion.
 autoload -Uz compinit && compinit
 
-# oh-my-zsh case autocompletion ignore casing.
+# Oh My Zsh like case autocompletion ignore casing.
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|?=** r:|?=**'
 
 # Highlight the current autocomplete option.
