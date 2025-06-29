@@ -1,5 +1,42 @@
 # Changelog
 
+## 1.0.1 (2025-06-29)
+
+## What's Changed
+* chore(deps): update dependency developerc286/clean_git_history to v1.0.1 by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/64
+* build: cloning releases from GitHub by @DeveloperC286 in https://github.com/DeveloperC286/oh-my-minimal/pull/66
+* docs: correcting Git URL by @DeveloperC286 in https://github.com/DeveloperC286/oh-my-minimal/pull/67
+* chore(deps): update golang:1.24.2 docker digest to 8131d99 by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/68
+* chore(deps): update golang:1.24.2 docker digest to f52b85c by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/69
+* chore(deps): update golang:1.24.2 docker digest to 30baaea by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/70
+* chore(deps): update golang docker tag to v1.24.3 by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/71
+* chore(deps): update golang:1.24.3 docker digest to 86b4cff by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/73
+* chore(deps): update dependency developerc286/clean_git_history to v1.0.2 by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/74
+* chore(deps): update golang:1.24.3 docker digest to 1bcf884 by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/75
+* chore(deps): update golang:1.24.3 docker digest to 02a2275 by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/76
+* chore(deps): update golang:1.24.3 docker digest to baf611f by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/77
+* chore(deps): update golang:1.24.3 docker digest to 795a40c by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/78
+* chore(deps): update golang:1.24.3 docker digest to 4c0a181 by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/79
+* chore(deps): update alpine docker tag by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/80
+* chore(deps): update golang:1.24.3 docker digest to 81bf592 by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/81
+* chore(deps): update golang docker tag to v1.24.4 by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/82
+* docs: correcting Zsh casing by @DeveloperC286 in https://github.com/DeveloperC286/oh-my-minimal/pull/83
+* chore(config): migrate renovate config by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/72
+* chore(deps): update dependency developerc286/clean_git_history to v1.0.3 by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/84
+* build: replacing Earthly with Makefile & Docker build/run by @DeveloperC286 in https://github.com/DeveloperC286/oh-my-minimal/pull/85
+* build: changing WORKDIR to workspace by @DeveloperC286 in https://github.com/DeveloperC286/oh-my-minimal/pull/86
+* ci: Renovate updating Makefile's Docker Images by @DeveloperC286 in https://github.com/DeveloperC286/oh-my-minimal/pull/87
+* ci: simplifying mirroring workflow by @DeveloperC286 in https://github.com/DeveloperC286/oh-my-minimal/pull/88
+* chore(deps): update ghcr.io/google/yamlfmt docker tag to v0.17.1 by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/89
+* chore(deps): update ghcr.io/google/yamlfmt docker tag to v0.17.2 by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/90
+* chore(deps): update dependency developerc286/clean_git_history to v1.0.4 by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/91
+* ci: migrating to clean_git_history Docker image by @DeveloperC286 in https://github.com/DeveloperC286/oh-my-minimal/pull/92
+* chore(deps): update rust docker tag to v1.88.0 by @renovate in https://github.com/DeveloperC286/oh-my-minimal/pull/93
+* ci: conventional commits linter Docker image by @DeveloperC286 in https://github.com/DeveloperC286/oh-my-minimal/pull/95
+
+
+**Full Changelog**: https://github.com/DeveloperC286/oh-my-minimal/compare/v1.0.0...v1.0.1
+
 ## 1.0.0 (2025-04-18)
 
 ## What's Changed
