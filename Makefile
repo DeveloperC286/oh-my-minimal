@@ -5,7 +5,7 @@ GID := $(shell id -g)
 DOCKER_RUN_WRITE_OPTS := $(DOCKER_RUN_OPTS) -u $(UID):$(GID)
 
 .PHONY: default
-default: 
+default:
 	echo "No default target."
 
 # renovate: depName=ghcr.io/developerc286/clean_git_history
@@ -18,10 +18,11 @@ check-clean-git-history:
 # renovate: depName=ghcr.io/developerc286/conventional_commits_linter
 CONVENTIONAL_COMMITS_LINTER_VERSION=0.15.0@sha256:b631a3cdcbed28c8938a2a6b63e16ecfd0d7ff71c28e878815adf9183e1fb599
 
-.PHONY: check-clean-git-history
+.PHONY: check-conventional-commits-linting
 check-conventional-commits-linting:
 	docker run $(DOCKER_RUN_WRITE_OPTS) ghcr.io/developerc286/conventional_commits_linter:$(CONVENTIONAL_COMMITS_LINTER_VERSION) --allow-angular-type-only $(FROM)
 
+# renovate: depName=ghcr.io/google/yamlfmt
 YAMLFMT_VERSION=0.17.0@sha256:b4ebf4ff064f5bcf779ef4799dad1fc52542e137677699210aea2de2b270e97f
 
 .PHONY: check-yaml-formatting
