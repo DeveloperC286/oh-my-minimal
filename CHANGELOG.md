@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.0.2 (2026-05-01)
+
+## What's Changed
+* chore(deps): update nix flake lock by @renovate[bot] in https://github.com/DeveloperC286/oh-my-minimal/pull/166
+* chore(deps): update nix flake lock by @renovate[bot] in https://github.com/DeveloperC286/oh-my-minimal/pull/168
+* chore(deps): update dependency https://github.com/developerc286/template to v1.7.7 by @renovate[bot] in https://github.com/DeveloperC286/oh-my-minimal/pull/169
+* chore(deps): update nix flake lock by @renovate[bot] in https://github.com/DeveloperC286/oh-my-minimal/pull/170
+* chore(deps): update nix flake lock by @renovate[bot] in https://github.com/DeveloperC286/oh-my-minimal/pull/171
+* chore(deps): update dependency https://github.com/developerc286/template to v1.7.8 by @renovate[bot] in https://github.com/DeveloperC286/oh-my-minimal/pull/172
+* docs: deprecation notice by @DeveloperC286 in https://github.com/DeveloperC286/oh-my-minimal/pull/173
+
+
+**Full Changelog**: https://github.com/DeveloperC286/oh-my-minimal/compare/v1.0.1...v1.0.2
+
 ## 1.0.1 (2026-03-30)
 
 ## What's Changed
